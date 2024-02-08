@@ -2,10 +2,25 @@
 <html>
 <head>
 <meta charset=utf8>
+<style>
+    table, th, td {
+        border: 1px solid;
+        border-collapse: collapse;
+        padding: 5px;
+        }
+</style>
 <head>
 <body>
-    <div id="output_div"></div>
     <button id="spin_button" style="background-color: #ebebeb">Click to spin the roulette wheel!</button>
+    <br><br>
+    <table id="output_table">
+        <tr>
+            <th>Number</th>
+            <th>Color</th>
+            <th>Pairity</th>
+            <th>Pass/Fail</th>
+        </tr>
+    </table>
     <script src="/static/roulette.js" ></script>
 </body>
 </html>
