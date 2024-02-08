@@ -42,11 +42,15 @@ function spin_wheel(wheel_arr){
     // Prints Color
     if(rand_i % 2 == 0){
         final_print = final_print.concat("red, ");
-        color.innerHTML = "red"
+        color.innerHTML = "Red"
+        color.style.backgroundColor = "Red";
     }
     else{
         final_print = final_print.concat("black, ");
         color.innerHTML = "black"
+        color.style.backgroundColor = "Black";
+        color.style.color = "White";
+        color.style.border = "Black";
     }
     new_row.appendChild(color);
 
@@ -54,10 +58,12 @@ function spin_wheel(wheel_arr){
     if(wheel_arr[rand_i] % 2 == 0){
         final_print = final_print.concat("even, ");
         pairity.innerHTML = "even"
+        pairity.style.backgroundColor = "Pink";
     }
     else{
         final_print = final_print.concat("odd, ");
         pairity.innerHTML = "odd"
+        pairity.style.backgroundColor = "PapayaWhip";
     }
     new_row.appendChild(pairity);
 
@@ -65,10 +71,12 @@ function spin_wheel(wheel_arr){
     if((wheel_arr[rand_i] >= 1 && wheel_arr[rand_i] <= 18) || wheel_arr[rand_i] == -1){
         final_print = final_print.concat("passed.");
         pass.innerHTML = "passed"
+        pass.style.backgroundColor = "LightGreen";
     }
     else{
         final_print = final_print.concat("failed.");
         pass.innerHTML = "failed"
+        pass.style.backgroundColor = "PeachPuff";
     }
     new_row.appendChild(pass);
 
