@@ -1,11 +1,19 @@
 "use strict";
 
+let sock;
+
 function main(){
+    // Websocket creation and event handlers
+    sock = new WebSocket("ws://"+document.location.host+"/sock");
+    sock.addEventListener("open", ()=>{ 
+        console.log("SOCK IS OPEN");
+    });
+    sock.addEventListener("message", gotMessage);
+
     console.log("Test Start\n");
     let output_table = document.getElementById("output_table");
     let spin_button = document.getElementById("spin_button");
     let wheel_arr = [0, 34, 10, 21, 28, 4, 18, 9, 27, 22, 12, 3, 17, 20, 11, 33, 2, 10, 32, -1, 15, 8, 25, 1, 31, 20, 14, 30, 7, 24, 29, 35, 6, 13, 23, 19, 5, 36];
-    spin_wheel(wheel_arr, output_table); //Does one initial spin to populate the table
 
     spin_button.addEventListener("mouseover", () => {
         spin_button.style.backgroundColor="#808080";
@@ -82,7 +90,17 @@ function spin_wheel(wheel_arr){
 
     // Outputs outcome of spin
     console.log(final_print);
+    sock.send(new_row.innerHTML);
+}
+
+function gotMessage(event){
+    console.log("GOT MESSAGE");
+
+    let output_table = document.getElementById("output_table");
+    let new_row = document.createElement("tr");
+
+    new_row.innerHTML = event.data;
     output_table.appendChild(new_row);
 }
 
-main()
+main();
